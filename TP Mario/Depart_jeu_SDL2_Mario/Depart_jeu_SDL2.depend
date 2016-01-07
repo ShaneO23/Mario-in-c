@@ -344,3 +344,10 @@
 
 1445691764 f:\mario-in-c\tp mario\depart_jeu_sdl2_mario\iutsdl.h
 
+1452195182 source:f:\mario-in-c\tp mario\depart_jeu_sdl2_mario\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<SDL2/SDL.h>
+	"IUTSDL.h"
+

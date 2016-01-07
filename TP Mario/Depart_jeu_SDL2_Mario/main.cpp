@@ -151,12 +151,13 @@ Uint32 callback( Uint32 interval, void* param )
    //This Rules will show before the game starts
 void rules()
 {
-    printf("Welcome to Shane's Mario Game !!!\n");
-    printf("The rules of the game are simple if you hit a Fireball, Plant or Turtle Mario dies !\n");
-    printf("And if you fall in the water you die also......\n");
-    printf("To win :\n 1) Collect all the coins\n 2) Get to the Flagpole the fastest you can to get a better Score !!\n");
-    printf("Remember this game is for Fun !\n");
-    printf("The Game will start by itself, ENJOY!!!!!!");
+    printf("\nWELCOME to Shane's Mario Game !!!\n");
+    printf("To Move Mario around use the arrows on your Keyboard\n");
+    printf("The rules of the game are simple if you hit a Fireball, Plant or Turtle Mario \n dies !\n");
+    printf("\nAnd if you fall in the water you die also......\n");
+    printf("\nTo win :\n 1) Collect all the coins\n 2) Get to the Flagpole the fastest you can to get a better Score !!\n");
+    printf("\nRemember this game is for Fun !\n");
+    printf("\nThe Game will start by itself, ENJOY!!!!!!");
 
     SDL_Delay(2000) ;
 }
@@ -321,8 +322,8 @@ void affichageTurtle(SDL_Renderer *sdlRenderer)
 
 
 
-
-void effacerMario(SDL_Renderer *sdlRenderer, int x, int y) //effacer les traces de mario
+//effacer les traces de mario
+void effacerMario(SDL_Renderer *sdlRenderer, int x, int y)
 {
     SDL_Rect rect = rectGrille[x][y] ;
     SDL_RenderCopy(sdlRenderer, pTextureBackground, NULL, &rect);
@@ -333,7 +334,7 @@ void effacerMario(SDL_Renderer *sdlRenderer, int x, int y) //effacer les traces 
 void init(SDL_Renderer *sdlRenderer)
 {
     // Init random
-    srand(time(NULL));
+    //srand(time(NULL));
 
     // Textures pour afficher éléments du jeu
     initTextures(sdlRenderer) ;
@@ -361,7 +362,7 @@ void init(SDL_Renderer *sdlRenderer)
                         affichageCoin(sdlRenderer);
                         }
 
-                    if (ecran[i][j] == 'F' )     // if(ecran[xMario][yMario] == 'B' ) { affichagePerdu(sldRenderer)}
+                    if (ecran[i][j] == 'F' )
                         {
                         affichageFlagpole(sdlRenderer);
                         }
@@ -381,20 +382,15 @@ void init(SDL_Renderer *sdlRenderer)
                         affichageTurtle(sdlRenderer);
                         }
             }
+
         }
     }
-
-
-
-
-
-
-
 
 
     // Mise à jour de l'affichage
     IUTSDL_RefreshScreen(sdlRenderer);
 }
+
 
 
 // -----------------------------------------------------
@@ -407,16 +403,12 @@ int main( int argc, char* args[] )
 
 
     int x, y,i,j,sens ;
-
-    char attente_validation;  //Pour attendre que l'utilisateur appuie sur entrée avant de lancer le jeu
     // Mario Position
     int xMario, yMario ;
     //Mario Direction
     int dirMario ;
 
     rules();
-
-
 
     // Initialisations graphique SDL
     // LAISSER TEL QUEL
@@ -463,58 +455,45 @@ int main( int argc, char* args[] )
     xMario = 0 ;
     yMario = 0 ;
     dirMario = MOVE_DOWN ;
-    int points=0;
+    int dollar=0;
+    int escape;
 
-
-    while(!sortie)
+    while(!escape)
     {
         // Affichage titre de fenetre
         SDL_SetWindowTitle(pScreen, gTitle);
 
-        // Attendre un poil
         SDL_Delay(50) ;
 
-
-
-
-
-
-
-        // Recup des evenements externe (clavier, souris)
+        // Keyboard to action in game
         SDL_Event( event );
         while( SDL_PollEvent( &event ) != 0 )
         {
             sens = -1 ;
             switch ( event.type)
             {
-            case SDL_QUIT :
-                sortie = 1 ;
+                case SDL_QUIT :
+                escape = 1 ;
                 break;
 
             case SDL_KEYDOWN :
                 switch( event.key.keysym.sym )
                 {
 
-
-                case SDLK_ESCAPE:
-                    sortie = 1;
+                    case SDLK_LEFT:
+                        sens = MOVE_LEFT ;
                     break;
-
-
-                    break;
-
-                case SDLK_LEFT:
-                    sens = MOVE_LEFT ;
-                    break;
-                case SDLK_RIGHT:
-                    sens = MOVE_RIGHT ;
-                    break;
-                case SDLK_UP:
-                    sens = MOVE_UP;
-                    break;
-                case SDLK_DOWN:
-                    sens = MOVE_DOWN ;
-                    break;
+                        case SDLK_RIGHT:
+                        sens = MOVE_RIGHT ;
+                        break;
+                    case SDLK_UP:
+                        sens = MOVE_UP;
+                        break;
+                    case SDLK_DOWN:
+                        sens = MOVE_DOWN ;
+                        break;
+                        case SDLK_ESCAPE:
+                        escape = 1;
 
 
                 }
@@ -539,38 +518,46 @@ int main( int argc, char* args[] )
                 break;
             }
 
+// If Mario hits something
+                    if(ecran[xMario][yMario] == 'B' )
+                        {
+                            affichageBowser(sdlRenderer);
+                        }
+                    if(ecran[xMario][yMario] == 'P')
+                        {
+                            affichageBowser(sdlRenderer);
+                        }
+                     if(ecran[xMario][yMario] == 'T')
+                        {
+                            affichageBowser(sdlRenderer);
+                        }
+                    if(ecran[xMario][yMario] == 'E')
+                        {
+                            affichageBowser(sdlRenderer);
+                        }
 
-
-
-            if (ecran[xMario][yMario] == 'C')   // Coins
+// Coins
+            if (ecran[xMario][yMario] == 'C')
             {
-                points++;
+                dollar++;
             }
 
 
-
-        if (ecran[xMario][yMario] == 'F') // when on 'F' end the game
-        {
-           sortie = 1;
-        }
+// when Mario on 'F' with all the coins collected the game ends
+        if (dollar==5, ecran[xMario][yMario] == 'F')
+         {
+                escape = 1;
+         }
 
 
         affichageMario(sdlRenderer, xMario, yMario, dirMario) ;
         IUTSDL_RefreshScreen(sdlRenderer);
     }
 
-    // Quand le temps est écoulé ou que le joueur a perdu :
-
     IUTSDL_ClearScreen(sdlRenderer);
     IUTSDL_RefreshScreen(sdlRenderer);
 
 
-    SDL_Delay(1000);     // Pause pour laisser le temps a l'utilisateur de lire le message de fermeture
-
-    SDL_RemoveTimer( timerID );
-
-
-    printf("\n MERCI d'avoir participe a l'experience Pacman !\n Vous avez mis fin a la partie !\n ") ;
     }
 
     return 0 ;
