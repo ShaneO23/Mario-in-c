@@ -18,11 +18,11 @@ const int tatoal_time = 60;    //60seconds to read the rules
 
 // -----------------------------------------------------
 // Nom du jeu
-#define TITRE "Mario Shane»
+#define TITRE "Mario Shane"
 
 // Dimensions de la grille
 #define NBL 35         // Nombre de lignes
-#define NBC 11          // Nombre de colonnes
+#define NBC 20          // Nombre de colonnes
 
 // Dimensions des cases : correspond au images bitmap
 #define CASE_W 34       // Largeur
@@ -102,16 +102,16 @@ char ecran [NBC][NBL] =
  {'.','.','.','.','W','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
  {'.','.','.','.','W','.','P','.','P','M','M','P','.','P','M','.','.','O','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
  {'.','.','.','.','W','C','P','.','.','.','T','.','.','.','M','.','.','.','.','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M'},
- {'W','B','B','W','W','W','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'}};
-/* {.....M...MMMMM.MM.......M..........},
- {.....M...MMC..G..G..MXXCM.XX.MMMM..},
- {..M..M...MWWWWWWWWWWM...M..G.M...G.},
- {X.MC.M...MWWWWWWWWWWMCXXMX..XMMM..M},
- {..MMMM...MWWWWWWWWWWM...M..G.M...G.},
- {.........MWWWWWWWWWWMXXCM.XX.MMM..M},
- {.X.......MWWWWWWWWWWM...M..G.M...G.},
- {....G....MWWWWWWWWWWMCXXMX..XMM....},
- {........CMWWWWWWWWWWM....G...MM..F.}}*/
+ {'W','B','B','W','W','W','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
+ {'.','.','.','.','.','M','.','.','.','M','M','M','M','M','.','M','M','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
+ {'.','.','.','.','.','M','.','.','.','M','M','C','.','.','T','.','.','T','.','.','M','P','P','P','M','.','X','X','.','M','M','M','M','.','.'},
+ {'.','.','M','.','.','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','P','.','M','.','.','.','P','.'},
+ {'X','.','M','C','.','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','C','X','X','M','X','.','.','X','M','M','M','.','.','M'},
+ {'.','.','M','M','M','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
+ {'.','.','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','X','X','C','M','.','X','X','.','M','M','M','.','.','M'},
+ {'.','X','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
+ {'.','.','.','.','G','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','C','X','X','M','X','.','.','X','M','M','.','.','.','.'},
+ {'.','.','.','.','.','.','.','.','C','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','.','G','.','.','.','M','M','.','.','F','.'}};
 
 
 // Bitmaps pour l'affichage
@@ -197,12 +197,12 @@ void initRectGrille()
 // Affichage contenu fixe de la grille : fond
 void affichageBackground(SDL_Renderer *sdlRenderer, int i, int j)
 {
-    SDL_Rect rectFond ;
-    rectFond.x = i*CASE_W ;
-    rectFond.y = j*CASE_H ;
-    rectFond.w = CASE_W ;
-    rectFond.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureBackground, NULL, &rectFond);
+    SDL_Rect rect ;
+    rect.x = i*CASE_W ;
+    rect.y = j*CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureBackground, NULL, &rect);
 }
 
 // Affichage Mario
@@ -220,12 +220,12 @@ void affichageMario(SDL_Renderer *sdlRenderer, int x, int y, int sens)
 //Print Walls
 void affichageMur(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectWall ;
-    rectWall.x = i*CASE_W ;
-    rectWall.y = j*CASE_H ;
-    rectWall.w = CASE_W ;
-    rectWall.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rectWall);
+    SDL_Rect rect ;
+    rect.x = i*CASE_W ;
+    rect.y = j*CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rect);
 }
 
 //Print Coins
@@ -514,7 +514,7 @@ int main( int argc, char* args[] )
                     sens = MOVE_RIGHT ;
                     break;
                 case SDLK_UP:
-                    sens = MOVE_UP ;
+                    snes = MOVE_UP
                     break;
                 case SDLK_DOWN:
                     sens = MOVE_DOWN ;
