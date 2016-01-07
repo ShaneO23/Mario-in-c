@@ -92,36 +92,36 @@ char ecran [NBC][NBL] =
     {'C','M','M','M','S','M','M','S','M','M','M','M','M','S','M','M','M','M','M','C'},  //3
     {'C','S','S','S','S','M','M','S','S','S','S','S','M','S','S','S','S','S','D','C'},  //4
     {'C','C','C','C','C','C','C','C','C','F','C','C','C','C','C','C','C','C','C','C'}}; //5*/
-{{'.','.','.','.','W','.','.','.','.','M','M','.','.','.','.','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','P','.','M','M','.','.','.','M','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','.','P','.','M','M','.','T','.','M','.','.','O','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','.','P','M','M','P','.','P','M','.','.','O','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','.','P','.','M','M','.','G','.','M','.','.','O','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','.','P','.','P','M','M','P','.','P','M','.','.','O','.','M','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W'},
- {'.','.','.','.','W','C','P','.','.','.','T','.','.','.','M','.','.','.','.','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M'},
- {'W','B','B','W','W','W','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
- {'.','.','.','.','.','M','.','.','.','M','M','M','M','M','.','M','M','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
- {'.','.','.','.','.','M','.','.','.','M','M','C','.','.','T','.','.','T','.','.','M','P','P','P','M','.','X','X','.','M','M','M','M','.','.'},
- {'.','.','M','.','.','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','P','.','M','.','.','.','P','.'},
- {'X','.','M','C','.','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','C','X','X','M','X','.','.','X','M','M','M','.','.','M'},
- {'.','.','M','M','M','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
- {'.','.','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','X','X','C','M','.','X','X','.','M','M','M','.','.','M'},
- {'.','X','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
- {'.','.','.','.','G','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','C','X','X','M','X','.','.','X','M','M','.','.','.','.'},
- {'.','.','.','.','.','.','.','.','C','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','.','G','.','.','.','M','M','.','.','F','.'}};
+{{'.','.','.','.','W','.','.','.','.','W','W','.','.','.','.','.','.','.','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','P','P','.','W','W','.','.','.','W','.','.','.','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','.','P','.','W','W','.','T','.','W','.','.','O','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','P','.','.','W','W','.','.','.','W','.','.','.','.','W','W','E','E','E','E','E','E','E','E','E','E','W','E','E','W'},
+ {'.','.','.','.','W','.','P','.','P','W','W','P','.','P','W','.','.','O','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','P','.','.','W','W','.','.','.','W','.','.','.','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','.','P','.','W','W','.','T','.','W','.','.','O','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','P','.','.','W','W','.','.','.','W','.','.','.','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','.','P','.','P','W','W','P','.','P','W','.','.','O','.','W','W','E','E','E','E','E','E','E','E','E','E','E','E','E','W'},
+ {'.','.','.','.','W','C','P','.','.','.','T','.','.','.','W','.','.','.','.','W','W','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
+ {'E','B','B','E','E','E','.','.','.','.','.','.','.','.','W','.','.','.','.','.','.','.','.','.','W','.','.','.','.','.','.','.','.','.','.'},
+ {'.','.','.','.','.','W','.','.','.','W','W','W','W','W','.','M','W','.','.','.','.','.','.','.','W','.','.','.','.','.','.','.','.','.','.'},
+ {'.','.','.','.','.','W','.','.','.','W','M','C','.','.','T','.','.','T','.','.','W','P','P','C','W','.','X','X','.','W','W','W','W','.','.'},
+ {'.','.','W','.','.','W','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','.','.','.','W','.','.','P','.','W','.','.','.','P','.'},
+ {'P','.','W','C','.','W','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','C','X','X','W','X','.','.','X','W','W','W','.','.','M'},
+ {'.','.','W','W','W','W','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','.','.','.','W','.','.','T','.','W','.','.','.','T','.'},
+ {'.','.','.','.','.','.','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','X','X','C','W','.','X','X','.','W','W','W','.','.','M'},
+ {'.','P','.','.','.','.','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','.','.','.','W','.','.','T','.','W','.','.','.','T','.'},
+ {'.','.','.','.','T','.','.','.','.','W','E','E','E','E','E','E','E','E','E','E','W','C','X','X','W','X','.','.','X','W','W','.','.','.','.'},
+ {'.','.','.','.','.','.','.','.','C','W','E','E','E','E','E','E','E','E','E','E','W','.','.','.','.','T','.','.','.','W','W','.','.','.','F'}};
 
 
 // Bitmaps pour l'affichage
-SDL_Texture *pTextureBackground ; // déclaration texture de fond
-SDL_Texture *pTextureCoin ; // déclaration bloc de contour
-SDL_Texture *pTextureWall ;  // déclaration texture du mur
+SDL_Texture *pTextureBackground ;
+SDL_Texture *pTextureCoin ;
+SDL_Texture *pTextureWall ;
 SDL_Texture *pTextureWater ;
 SDL_Texture *pTextureFlagpole ;
-SDL_Texture *pTextureBomb ;  // déclaration texture des points jaunes
-SDL_Texture *pTexturePlant ;  // déclaration texture drapeau d'arrivée
+SDL_Texture *pTextureBomb ;
+SDL_Texture *pTexturePlant ;
 SDL_Texture *pTextureTurtle ;
 SDL_Texture *pTextureBrigde ;
 SDL_Texture *pTextureTrophy ;
@@ -134,21 +134,31 @@ SDL_Texture *pTextureMario[4]  ;
 SDL_Rect rectGrille[NBC][NBL] ;
 
 
-
-
 Uint32 callback( Uint32 interval, void* param )
 {
     static int compteur = 0 ;
-    int tempsjeu ; // Init du temps de jeu
-    tempsjeu = compteur / 1000 ;  // Conversion en secondes
+    int game_time ; // Init du temps de jeu
+    game_time = compteur / 1000 ;  // Conversion en secondes
 
     compteur+=interval ;
 
-
-    sprintf(gTitle," - Temps de jeu : %d sec ") ;// metre le temps de jeu
+    //Print the time in the top bar
+    sprintf(gTitle," - Temps de jeu : %d sec ",game_time) ;
 
 
     return interval;
+}
+   //This Rules will show before the game starts
+void rules()
+{
+    printf("Welcome to Shane's Mario Game !!!\n");
+    printf("The rules of the game are simple if you hit a Fireball, Plant or Turtle Mario dies !\n");
+    printf("And if you fall in the water you die also......\n");
+    printf("To win :\n 1) Collect all the coins\n 2) Get to the Flagpole the fastest you can to get a better Score !!\n");
+    printf("Remember this game is for Fun !\n");
+    printf("The Game will start by itself, ENJOY!!!!!!");
+
+    SDL_Delay(2000) ;
 }
 
 // -----------------------------------------------------
@@ -194,7 +204,7 @@ void initRectGrille()
 }
 
 
-// Affichage contenu fixe de la grille : fond
+// Affichage contenu fixe de la grille
 void affichageBackground(SDL_Renderer *sdlRenderer, int i, int j)
 {
     SDL_Rect rect ;
@@ -221,102 +231,91 @@ void affichageMario(SDL_Renderer *sdlRenderer, int x, int y, int sens)
 void affichageMur(SDL_Renderer *sdlRenderer)
 {
     SDL_Rect rect ;
-    rect.x = i*CASE_W ;
-    rect.y = j*CASE_H ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
     rect.w = CASE_W ;
     rect.h = CASE_H ;
     SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rect);
 }
 
 //Print Coins
-void affichageBonus(SDL_Renderer *sdlRenderer)
+void affichageCoin(SDL_Renderer *sdlRenderer)
 {
 
-    SDL_Rect rectCoins ;
-    rectCoins.x = i*CASE_W ;
-    rectCoins.y = j*CASE_H ;
-    rectCoins.w = CASE_W ;
-    rectCoins.h = CASE_H ;
+    SDL_Rect rect ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
 
-    SDL_RenderCopy(sdlRenderer, pTextureCoin, NULL, &rectCoins);
+    SDL_RenderCopy(sdlRenderer, pTextureCoin, NULL, &rect);
 
 }
 
 //Print Flag
 void affichageFlagpole(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectFlagpole ;
-    rectFlagpole.x = i*CASE_W ;
-    rectFlagpole.y = j*CASE_H ;
-    rectFlagpole.w = CASE_W ;
-    rectFlagpole.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureFlagpole, NULL, &rectFlagpole);
+    SDL_Rect rect ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureFlagpole, NULL, &rect);
 }
 
 //Print Trophy
 void affichageTrophy(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectTrophy;
-    rectTrophy.x = 12*CASE_W ;
-    rectTrophy.y = 5*CASE_H ;
-    rectTrophy.w = 13*CASE_W ;
-    rectTrophy.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureTrophy, NULL, &rectTrophy);
+    SDL_Rect rect;
+    rect.x = 12*CASE_W ;
+    rect.y = 5*CASE_H ;
+    rect.w = 13*CASE_W ;
+    rect.h = 8*CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureTrophy, NULL, &rect);
 }
 
 //Print Bowser
 void affichageBowser(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectBowser;
-    rectBowser.x = 5*CASE_W ;
-    rectBowser.y = 5*CASE_H ;
-    rectBowser.w = 8*CASE_W ;
-    rectBowser.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureBowser, NULL, &rectBowser);
-}
-
-//Print Coin
-void affichageCoin(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rectCoin;
-    rectCoin.x = 5*CASE_W ;
-    rectCoin.y = 5*CASE_H ;
-    rectCoin.w = 8*CASE_W ;
-    rectCoin.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureCoin, NULL, &rectCoin);
+    SDL_Rect rect;
+    rect.x = 5*CASE_W ;
+    rect.y = 5*CASE_H ;
+    rect.w = 8*CASE_W ;
+    rect.h = 8*CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureBowser, NULL, &rect);
 }
 
 //Print Water
 void affichageWater(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectWater;
-    rectWater.x = 5*CASE_W ;
-    rectWater.y = 5*CASE_H ;
-    rectWater.w = 8*CASE_W ;
-    rectWater.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureWater, NULL, &rectWater);
+    SDL_Rect rect;
+    rect.x = 5*CASE_W ;
+    rect.y = 5*CASE_H ;
+    rect.w = 8*CASE_W ;
+    rect.h = 8*CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureWater, NULL, &rect);
 }
 
 //Print Plant
 void affichagePlant(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectPlant;
-    rectPlant.x = 5*CASE_W ;
-    rectPlant.y = 5*CASE_H ;
-    rectPlant.w = 8*CASE_W ;
-    rectPlant.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTexturePlant, NULL, &rectPlant);
+    SDL_Rect rect;
+    rect.x = 5*CASE_W ;
+    rect.y = 5*CASE_H ;
+    rect.w = 8*CASE_W ;
+    rect.h = 8*CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTexturePlant, NULL, &rect);
 }
 
 //Print Turtle
 void affichageTurtle(SDL_Renderer *sdlRenderer)
 {
-    SDL_Rect rectTurtle;
-    rectTurtle.x = 5*CASE_W ;
-    rectTurtle.y = 5*CASE_H ;
-    rectTurtle.w = 8*CASE_W ;
-    rectTurtle.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureTurtle, NULL, &rectTurtle);
+    SDL_Rect rect;
+    rect.x = 5*CASE_W ;
+    rect.y = 5*CASE_H ;
+    rect.w = 8*CASE_W ;
+    rect.h = 8*CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureTurtle, NULL, &rect);
 }
 
 
@@ -406,22 +405,19 @@ int main( int argc, char* args[] )
     SDL_Window   *pScreen=NULL;         // Fenetre
     SDL_Renderer *sdlRenderer=NULL;     // Declaration du Buffer Video
 
-    // Nouvelles positions pour calcul
-    int x, y ;
-    int sens ;
-    int i, j ;
+
+    int x, y,i,j,sens ;
+
     char attente_validation;  //Pour attendre que l'utilisateur appuie sur entrée avant de lancer le jeu
-    // Position Mario
-    int xMario, yMario ;        // Position de Mario
-    // Direction Mario
+    // Mario Position
+    int xMario, yMario ;
+    //Mario Direction
     int dirMario ;
 
-    // Listage des regles et commandes
-    printf("Bienvenue dans cette toute nouvelle experience \n\n") ;
+    rules();
 
 
-    // 8 secondes de pause pour laisser le temps de lire
-    //
+
     // Initialisations graphique SDL
     // LAISSER TEL QUEL
     //
@@ -514,7 +510,7 @@ int main( int argc, char* args[] )
                     sens = MOVE_RIGHT ;
                     break;
                 case SDLK_UP:
-                    snes = MOVE_UP
+                    sens = MOVE_UP;
                     break;
                 case SDLK_DOWN:
                     sens = MOVE_DOWN ;
@@ -575,7 +571,7 @@ int main( int argc, char* args[] )
 
 
     printf("\n MERCI d'avoir participe a l'experience Pacman !\n Vous avez mis fin a la partie !\n ") ;
-
+    }
 
     return 0 ;
 
