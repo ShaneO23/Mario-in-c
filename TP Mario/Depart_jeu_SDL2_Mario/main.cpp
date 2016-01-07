@@ -553,7 +553,7 @@ int main( int argc, char* args[] )
                         {
                             affichageBowser(sdlRenderer);
                         }
-                  /*  if(ecran[xMario][yMario] == 'I')
+                  /*  if(ecran[xMario][yMario] == 'S')
                         {
                             MOVE_UP    =MOVE_DOWN;
                             MOVE_DOWN  =MOVE_UP;
