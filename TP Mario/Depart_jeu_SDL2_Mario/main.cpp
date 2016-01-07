@@ -123,6 +123,8 @@ SDL_Texture *pTextureFlagpole ;
 SDL_Texture *pTextureBomb ;
 SDL_Texture *pTexturePlant ;
 SDL_Texture *pTextureTurtle ;
+SDL_Texture *pTextureInverse ;
+
 SDL_Texture *pTextureBrigde ;
 SDL_Texture *pTextureTrophy ;
 SDL_Texture *pTextureBowser ;
@@ -176,7 +178,7 @@ void initTextures(SDL_Renderer *sdlRenderer)
     pTextureBomb=IUTSDL_LoadTexture(sdlRenderer, "bomb.bmp" ,0xFF,0xFF,0xFF);
     pTexturePlant=IUTSDL_LoadTexture(sdlRenderer, "plant.bmp" ,0xFF,0xFF,0xFF);
     pTextureFlagpole=IUTSDL_LoadTexture(sdlRenderer, "flagpole.bmp" ,0xFF,0xFF,0xFF);
-
+    pTextureInverse=IUTSDL_LoadTexture(sdlRenderer, "inverse.bmp" ,0xFF,0xFF,0xFF);
     pTextureMario[MOVE_LEFT]=IUTSDL_LoadTexture(sdlRenderer, "mario-gauche.bmp" ,0xFF,0xFF,0xFF);
     pTextureMario[MOVE_RIGHT]=IUTSDL_LoadTexture(sdlRenderer, "mario-droite.bmp" ,0xFF,0xFF,0xFF);
     pTextureMario[MOVE_UP]=IUTSDL_LoadTexture(sdlRenderer, "mario-haut.bmp" ,0xFF,0xFF,0xFF);
@@ -185,7 +187,7 @@ void initTextures(SDL_Renderer *sdlRenderer)
 
 
     pTextureTrophy=IUTSDL_LoadTexture(sdlRenderer, "trophy.bmp" ,0xFF,0xFF,0xFF);
-    pTextureBowser=IUTSDL_LoadTexture(sdlRenderer, "perdu.bmp" ,0xFF,0xFF,0xFF);
+    pTextureBowser=IUTSDL_LoadTexture(sdlRenderer, "bowser.bmp" ,0xFF,0xFF,0xFF);
 
 }
 
@@ -237,6 +239,17 @@ void affichageMur(SDL_Renderer *sdlRenderer)
     rect.w = CASE_W ;
     rect.h = CASE_H ;
     SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rect);
+}
+
+//Print Inverse
+void affichageInverse(SDL_Renderer *sdlRenderer)
+{
+    SDL_Rect rect ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureInverse, NULL, &rect);
 }
 
 //Print Coins
@@ -380,6 +393,10 @@ void init(SDL_Renderer *sdlRenderer)
                     if (ecran[i][j] == 'C' )
                         {
                         affichageTurtle(sdlRenderer);
+                        }
+                     if (ecran[i][j] == 'I' )
+                        {
+                        affichageInverse(sdlRenderer);
                         }
             }
 
@@ -534,6 +551,13 @@ int main( int argc, char* args[] )
                     if(ecran[xMario][yMario] == 'E')
                         {
                             affichageBowser(sdlRenderer);
+                        }
+                    if(ecran[xMario][yMario] == 'I')
+                        {
+                            MOVE_UP    =MOVE_DOWN;
+                            MOVE_DOWN  =MOVE_UP;
+                            MOVE_RIGHT =MOVE_LEFT;
+                            MOVE_LEFT  =MOVE_RIGHT;
                         }
 
 // Coins
