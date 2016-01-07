@@ -1,0 +1,58 @@
+Mise en oeuvre de la SDL2 pour le TP Mario
+------------------------------------------
+
+
+
+Si besoin la version utilisée ici est dispo en téléchargement
+https://www.libsdl.org/index.php
+version 2.0.3, version développement
+SDL2-devel-2.0.3-mingw.tar.gz
+
+Pour des infos sur l'utilisation SDL voir le wiki http://wiki.libsdl.org/FrontPage
+Tutoriels : http://wiki.libsdl.org/Tutorials
+
+
+
+Etapes pour créer votre projet - Certaines seront peut-être déjà faites selon votre point de départ.
+---------------------------------------------------------------------------------------------------
+1. Copier le répertoire SDL2-2.0.3 (fourni dans texte_exo) chez vous. 
+Vous obtiendrez par exemple 
+P:\SDL\SDL2-2.0.3
+
+2. Copier chez vous le projet Depart_jeu_SDL2_Mario (copier tout le répertoire).
+
+3. Copier les DLL de P:\SDL\SDL2-2.0.3\lib\x86 dans le répertoire projet. 
+
+4. Ouvrir le projet CB 
+Ajouter les bibliothèques SDL en entrée du link
+Menu Project > Build Options Onglet Linker Settings
+Dans le champ autres options du link, rajouter : -lmingw32 -lSDL2main -lSDL2
+
+Ajouter le chemin pour les finchiers .h et pour les bibliothèques de la SDL 
+Menu Project > Build Options Onglet Search Directories
+Onglet Compiler, rajouter : P:\SDL\SDL2-2.0.3\i686-w64-mingw32\include
+Onglet linker, rajouter : P:\SDL\SDL2-2.0.3\i686-w64-mingw32\lib
+
+5. Modifier le fichier P:\SDL\SDL2-2.0.3\i686-w64-mingw32\include\SDL2\SDL_platform.h : déplacer le #if defined(__MINGW32__) 
+A la place de :
+-------------------------------------------------------
+#if defined(WIN32) || defined(_WIN32) || defined(__CYGWIN__)
+/* Try to find out if we're compiling for WinRT or non-WinRT */
+/* If _USING_V110_SDK71_ is defined it means we are using the v110_xp or v120_xp toolset. */
+#if defined(__MINGW32__) || (defined(_MSC_VER) && (_MSC_VER >= 1700) && !_USING_V110_SDK71_)	/* _MSC_VER==1700 for MSVC 2012 */
+#include <winapifamily.h>
+-------------------------------------------------------
+On doit obtenir les lignes : 
+-------------------------------------------------------
+#if defined(__MINGW32__) || defined(WIN32) || defined(_WIN32) || defined(__CYGWIN__)
+/* Try to find out if we're compiling for WinRT or non-WinRT */
+/* If _USING_V110_SDK71_ is defined it means we are using the v110_xp or v120_xp toolset. */
+#if (defined(_MSC_VER) && (_MSC_VER >= 1700) && !_USING_V110_SDK71_)	/* _MSC_VER==1700 for MSVC 2012 */
+#include <winapifamily.h>
+-------------------------------------------------------
+
+6. Pour créer un fichier source dans votre projet
+Menu File > New... > File > C/C++ source file
+Choisir le type C++
+Lui donner le nom xxx.cpp dans le répertoire de base du projet et cocher les deux configurations Build et Release.
+
