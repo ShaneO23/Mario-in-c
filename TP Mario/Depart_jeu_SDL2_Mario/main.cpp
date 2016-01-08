@@ -257,7 +257,7 @@ void affichageBomb(SDL_Renderer *sdlRenderer)
 }
 
 //Print Explosion
-void affichageMur(SDL_Renderer *sdlRenderer)
+void affichageExplosion(SDL_Renderer *sdlRenderer)
 {
     SDL_Rect rect ;
     rect.x = CASE_W ;
