@@ -166,32 +166,41 @@ void rules()
     SDL_Delay(2000) ;
 }
 
+// Load texture
+SDL_Texture *loadTexture(SDL_Renderer *sdlRenderer, const char *name) {
+    // Calcul du chemin
+    char filename[1024];
+    snprintf(filename, 1023, "images/%s.bmp", name);
+
+    return IUTSDL_LoadTexture(sdlRenderer, filename, 0xFF,0xFF,0xFF);
+}
+
 // -----------------------------------------------------
 // Initialisations jeu
 // -----------------------------------------------------
 // Chargement des bitmaps pour affichage
 void initTextures(SDL_Renderer *sdlRenderer)
 {
-    pTextureBackground=IUTSDL_LoadTexture(sdlRenderer, "background.bmp" ,0xFF,0xFF,0xFF);
-    pTextureCoin=IUTSDL_LoadTexture(sdlRenderer, "coin.bmp" ,0xFF,0xFF,0xFF);
-    pTextureWall=IUTSDL_LoadTexture(sdlRenderer, "wall.bmp" ,0xFF,0xFF,0xFF);
-    pTextureWater=IUTSDL_LoadTexture(sdlRenderer, "water.bmp" ,0xFF,0xFF,0xFF);
-    pTextureBrigde=IUTSDL_LoadTexture(sdlRenderer, "bridge.bmp" ,0xFF,0xFF,0xFF);
-    pTextureBomb=IUTSDL_LoadTexture(sdlRenderer, "bomb.bmp" ,0xFF,0xFF,0xFF);
-    pTextureExplosion=IUTSDL_LoadTexture(sdlRenderer, "explosion.bmp" ,0xFF,0xFF,0xFF);
+    pTextureBackground=loadTexture(sdlRenderer, "background");
+    pTextureCoin=loadTexture(sdlRenderer, "coin");
+    pTextureWall=loadTexture(sdlRenderer, "wall");
+    pTextureWater=loadTexture(sdlRenderer, "water");
+    pTextureBrigde=loadTexture(sdlRenderer, "bridge");
+    pTextureBomb=loadTexture(sdlRenderer, "bomb");
+    pTextureExplosion=loadTexture(sdlRenderer, "explosion");
 
-    pTexturePlant=IUTSDL_LoadTexture(sdlRenderer, "plant.bmp" ,0xFF,0xFF,0xFF);
-    pTextureFlagpole=IUTSDL_LoadTexture(sdlRenderer, "flagpole.bmp" ,0xFF,0xFF,0xFF);
-    pTextureInverse=IUTSDL_LoadTexture(sdlRenderer, "inverse.bmp" ,0xFF,0xFF,0xFF);
-    pTextureMario[MOVE_LEFT]=IUTSDL_LoadTexture(sdlRenderer, "mario-gauche.bmp" ,0xFF,0xFF,0xFF);
-    pTextureMario[MOVE_RIGHT]=IUTSDL_LoadTexture(sdlRenderer, "mario-droite.bmp" ,0xFF,0xFF,0xFF);
-    pTextureMario[MOVE_UP]=IUTSDL_LoadTexture(sdlRenderer, "mario-haut.bmp" ,0xFF,0xFF,0xFF);
-    pTextureMario[MOVE_DOWN]=IUTSDL_LoadTexture(sdlRenderer, "mario-bas.bmp" ,0xFF,0xFF,0xFF);
+    pTexturePlant=loadTexture(sdlRenderer, "plant");
+    pTextureFlagpole=loadTexture(sdlRenderer, "flagpole");
+    pTextureInverse=loadTexture(sdlRenderer, "inverse");
+    pTextureMario[MOVE_LEFT]=loadTexture(sdlRenderer, "mario-gauche");
+    pTextureMario[MOVE_RIGHT]=loadTexture(sdlRenderer, "mario-droite");
+    pTextureMario[MOVE_UP]=loadTexture(sdlRenderer, "mario-haut");
+    pTextureMario[MOVE_DOWN]=loadTexture(sdlRenderer, "mario-bas");
 
 
 
-    pTextureTrophy=IUTSDL_LoadTexture(sdlRenderer, "trophy.bmp" ,0xFF,0xFF,0xFF);
-    pTextureBowser=IUTSDL_LoadTexture(sdlRenderer, "bowser.bmp" ,0xFF,0xFF,0xFF);
+    pTextureTrophy=loadTexture(sdlRenderer, "trophy");
+    pTextureBowser=loadTexture(sdlRenderer, "bowser");
 
 }
 
