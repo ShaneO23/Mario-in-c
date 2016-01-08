@@ -505,7 +505,7 @@ int main( int argc, char* args[] )
     yMario = 0 ;
     dirMario = MOVE_DOWN ;
     int dollar=0;
-    int escape;
+    int escape=0;
 
     while(!escape)
     {
