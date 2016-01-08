@@ -51,6 +51,8 @@ char gTitle[100] = "";              // Titre a afficher sur la fenetre
 int sortie = 0 ;
 int game_time=0;
 
+
+ void affichageWallpaper(SDL_Renderer *sdlRenderer);
 // MAP
 
 // 'C' = Coins, 'M' = Wall, 'F' = Flagpole, 'O' = Bomb, 'P' = Plant , 'B'=Bridge, 'W'=Water
@@ -60,12 +62,12 @@ char ecran [NBL][NBC] =
  {'.','.','.','.','M','.','.','P','.','M','M','.','T','.','M','.','.','O','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
  {'.','.','.','.','M','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
  {'.','.','.','.','M','.','P','.','P','M','M','P','.','P','M','.','.','O','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
- {'.','.','.','.','M','.','P','.','.','M','M','I','.','.','M','.','.','.','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
- {'.','.','.','.','M','.','I','P','.','M','M','.','T','.','M','.','.','O','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
+ {'.','.','.','.','M','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
+ {'.','.','.','.','M','.','.','P','.','M','M','.','T','.','M','.','.','O','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
  {'.','.','.','.','M','.','P','.','.','M','M','.','.','.','M','.','.','.','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
  {'.','.','.','.','M','.','P','.','P','M','M','P','.','P','M','.','.','O','.','M','M','W','W','W','W','W','W','W','W','W','W','W','W','W','M'},
  {'.','.','.','.','M','C','P','.','.','.','T','.','.','.','M','.','.','.','.','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M','M'},
- {'W','B','B','W','W','W','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','M','.','I','.','.','.','.','.','.','.','.'},
+ {'W','B','B','W','W','W','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
  {'.','.','.','.','.','M','.','.','.','M','M','M','M','M','I','M','M','.','.','.','.','.','.','.','M','.','.','.','.','.','.','.','.','.','.'},
  {'.','.','.','.','.','M','.','.','.','M','M','C','.','.','T','.','.','T','.','.','M','P','P','C','M','.','P','P','.','M','M','M','M','.','.'},
  {'.','.','M','.','.','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','.','.','M','.','.','.','.','.'},
@@ -73,7 +75,7 @@ char ecran [NBL][NBC] =
  {'.','.','M','M','M','M','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
  {'.','.','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','P','P','C','M','.','P','P','.','M','M','M','.','.','M'},
  {'.','P','.','.','.','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','M','.','.','T','.','M','.','.','.','T','.'},
- {'.','.','.','.','T','.','.','.','I','M','W','W','W','W','W','W','W','W','W','W','M','C','P','P','M','P','.','.','P','M','M','.','.','.','.'},
+ {'.','.','.','.','T','.','.','.','.','M','W','W','W','W','W','W','W','W','W','W','M','C','P','P','M','P','.','.','P','M','M','.','.','.','.'},
  {'.','.','.','.','.','.','.','.','C','M','W','W','W','W','W','W','W','W','W','W','M','.','.','.','.','.','.','.','.','M','M','.','.','.','F'}};
 
 
@@ -87,7 +89,7 @@ SDL_Texture *pTextureBomb ;
 SDL_Texture *pTextureExplosion ;
 SDL_Texture *pTexturePlant ;
 SDL_Texture *pTextureTurtle ;
-SDL_Texture *pTextureInverse ;
+SDL_Texture *pTextureWallpaper ;
 
 SDL_Texture *pTextureBrigde ;
 SDL_Texture *pTextureTrophy ;
@@ -153,14 +155,13 @@ void initTextures(SDL_Renderer *sdlRenderer)
 
     pTexturePlant=loadTexture(sdlRenderer, "plant");
     pTextureFlagpole=loadTexture(sdlRenderer, "flagpole");
-    pTextureInverse=loadTexture(sdlRenderer, "inverse");
     pTextureMario[MOVE_LEFT]=loadTexture(sdlRenderer, "mario-gauche");
     pTextureMario[MOVE_RIGHT]=loadTexture(sdlRenderer, "mario-droite");
     pTextureMario[MOVE_UP]=loadTexture(sdlRenderer, "mario-haut");
     pTextureMario[MOVE_DOWN]=loadTexture(sdlRenderer, "mario-bas");
 
 
-
+    pTextureWallpaper=loadTexture(sdlRenderer, "wallpaper");
     pTextureTrophy=loadTexture(sdlRenderer, "trophy");
     pTextureBowser=loadTexture(sdlRenderer, "bowser");
 
@@ -188,6 +189,16 @@ void renderTile(SDL_Renderer *sdlRenderer, int x, int y, SDL_Texture *texture) {
     SDL_RenderCopy(sdlRenderer, texture, NULL, &rect);
 }
 
+void affichageWallpaper(SDL_Renderer *sdlRenderer)
+ {
+    SDL_Rect rectWallpaper ;
+    rectWallpaper.x = 0;
+    rectWallpaper.y = 0 ;
+    rectWallpaper.w = SCREEN_W ;
+    rectWallpaper.h = SCREEN_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureWallpaper, NULL, &rectWallpaper);
+ }
+
 SDL_Texture *tileTexture(char tile) {
     if (tile == 'M') {
         return pTextureWall;
@@ -201,14 +212,10 @@ SDL_Texture *tileTexture(char tile) {
         return pTexturePlant;
     } else if (tile == 'T') {
         return pTextureTurtle;
-    } else if (tile == 'S') {
-        return pTextureInverse;
     } else if (tile == 'O') {
         return pTextureBomb;
     } else if (tile == 'B') {
         return pTextureBrigde;
-    } else if (tile == 'I') {
-        return pTextureInverse;
     }
     return NULL;
 }
@@ -342,6 +349,8 @@ int main( int argc, char* args[] )
     // Jeu
     // Initialisations
     init(sdlRenderer) ;
+    affichageWallpaper(sdlRenderer);
+    SDL_Delay(1000);
 
     int xMario = 0;
     int yMario = 0;
@@ -421,6 +430,7 @@ int main( int argc, char* args[] )
                         x++;
                         break;
 
+
                 }
 
                 // Validate move (check if allowed)
@@ -474,6 +484,7 @@ int main( int argc, char* args[] )
             affichageMario(sdlRenderer, xMario, yMario, dirMario);
         } else {
             affichageBowser(sdlRenderer);
+
         }
         IUTSDL_RefreshScreen(sdlRenderer);
 
