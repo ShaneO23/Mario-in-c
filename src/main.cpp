@@ -479,7 +479,7 @@ int main( int argc, char* args[] )
 
     }
 
-    printf("\nYou played for %d seconds",game_time);
+    printf("\nYou played for %d seconds\n",game_time);
 
     return 0 ;
 
