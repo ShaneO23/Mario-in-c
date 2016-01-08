@@ -219,16 +219,32 @@ void initRectGrille()
     }
 }
 
-
-// Affichage contenu fixe de la grille
-void affichageBackground(SDL_Renderer *sdlRenderer, int i, int j)
-{
+void renderTile(SDL_Renderer *sdlRenderer, int x, int y, SDL_Texture *texture) {
     SDL_Rect rect ;
-    rect.x = i*CASE_W ;
-    rect.y = j*CASE_H ;
+    rect.x = x * CASE_W ;
+    rect.y = y * CASE_H ;
     rect.w = CASE_W ;
     rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureBackground, NULL, &rect);
+    SDL_RenderCopy(sdlRenderer, texture, NULL, &rect);
+}
+
+SDL_Texture *tileTexture(char tile) {
+    if (tile == 'M') {
+        return pTextureWall;
+    } else if (tile == 'C') {
+        return pTextureCoin;
+    } else if (tile == 'F') {
+        return pTextureFlagpole;
+    } else if (tile == 'W') {
+        return pTextureWater;
+    } else if (tile == 'P') {
+        return pTexturePlant;
+    } else if (tile == 'C') {
+        return pTextureTurtle;
+    } else if (tile == 'S') {
+        return pTextureInverse;
+    }
+    return NULL;
 }
 
 // Affichage Mario
@@ -240,76 +256,6 @@ void affichageMario(SDL_Renderer *sdlRenderer, int x, int y, int sens)
     rectMario.w = CASE_W ;
     rectMario.h = CASE_H ;
     SDL_RenderCopy(sdlRenderer, pTextureMario[4], NULL, &rectMario); //on note pTextureMario[a] afin de pouvoir utiliser le sprite
-}
-
-
-//Print Walls
-void affichageMur(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rect);
-}
-
-//Print Bombs
-void affichageBomb(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureBomb, NULL, &rect);
-}
-
-//Print Explosion
-void affichageExplosion(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureExplosion, NULL, &rect);
-}
-
-//Print Inverse
-void affichageInverse(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureInverse, NULL, &rect);
-}
-
-//Print Coins
-void affichageCoin(SDL_Renderer *sdlRenderer)
-{
-
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-
-    SDL_RenderCopy(sdlRenderer, pTextureCoin, NULL, &rect);
-
-}
-
-//Print Flag
-void affichageFlagpole(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect ;
-    rect.x = CASE_W ;
-    rect.y = CASE_H ;
-    rect.w = CASE_W ;
-    rect.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureFlagpole, NULL, &rect);
 }
 
 //Print Trophy
@@ -334,42 +280,6 @@ void affichageBowser(SDL_Renderer *sdlRenderer)
     SDL_RenderCopy(sdlRenderer, pTextureBowser, NULL, &rect);
 }
 
-//Print Water
-void affichageWater(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect;
-    rect.x = 5*CASE_W ;
-    rect.y = 5*CASE_H ;
-    rect.w = 8*CASE_W ;
-    rect.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureWater, NULL, &rect);
-}
-
-//Print Plant
-void affichagePlant(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect;
-    rect.x = 5*CASE_W ;
-    rect.y = 5*CASE_H ;
-    rect.w = 8*CASE_W ;
-    rect.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTexturePlant, NULL, &rect);
-}
-
-//Print Turtle
-void affichageTurtle(SDL_Renderer *sdlRenderer)
-{
-    SDL_Rect rect;
-    rect.x = 5*CASE_W ;
-    rect.y = 5*CASE_H ;
-    rect.w = 8*CASE_W ;
-    rect.h = 8*CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureTurtle, NULL, &rect);
-}
-
-
-
-
 //effacer les traces de mario
 void effacerMario(SDL_Renderer *sdlRenderer, int x, int y)
 {
@@ -390,60 +300,21 @@ void init(SDL_Renderer *sdlRenderer)
 
     // Grille pour affichage décors. Attention Table colonne/ligne pour respecter le sens x=colonne et y=ligne
     initRectGrille() ;
+}
 
-    //Print Background
+
+void renderMap(SDL_Renderer *sdlRenderer) {
+    // Print Background
     for(int i=0 ; i<NBC; i++)
     {
         for (int j=0 ; j<NBL; j++)
         {
-            {
-
-                affichageBackground(sdlRenderer,i ,j);
-
-                    if (ecran[i][j] == 'M' )
-                        {
-                        affichageMur(sdlRenderer) ;
-                        }
-
-                    if (ecran[i][j] == 'C' )
-                        {
-                        affichageCoin(sdlRenderer);
-                        }
-
-                    if (ecran[i][j] == 'F' )
-                        {
-                        affichageFlagpole(sdlRenderer);
-                        }
-
-                    if (ecran[i][j] == 'W' )
-                        {
-                        affichageWater(sdlRenderer);
-                        }
-
-                    if (ecran[i][j] == 'P' )
-                        {
-                        affichagePlant(sdlRenderer);
-                        }
-
-                    if (ecran[i][j] == 'C' )
-                        {
-                        affichageTurtle(sdlRenderer);
-                        }
-                     if (ecran[i][j] == 'S' )
-                        {
-                        affichageInverse(sdlRenderer);
-                        }
-            }
-
+                char tile = ecran[i][j];
+                renderTile(sdlRenderer, i ,j, pTextureBackground);
+                renderTile(sdlRenderer, i, j, tileTexture(tile));
         }
     }
-
-
-    // Mise à jour de l'affichage
-    IUTSDL_RefreshScreen(sdlRenderer);
 }
-
-
 
 // -----------------------------------------------------
 // Fonction main
@@ -567,12 +438,11 @@ int main( int argc, char* args[] )
             }
 
 // If Mario hits something
-                    if(ecran[xMario][yMario] == 'B' )
-                        {
-                            affichageExplosion(sdlRenderer);
-                            SDL_Delay(100);
-                            affichageBowser(sdlRenderer);
-                        }
+                    if(ecran[xMario][yMario] == 'B' ) {
+                        renderTile(sdlRenderer, xMario, yMario, pTextureExplosion);
+                        SDL_Delay(1000);
+                        affichageBowser(sdlRenderer);
+                    }
                     if(ecran[xMario][yMario] == 'P')
                         {
                             affichageBowser(sdlRenderer);
@@ -606,7 +476,7 @@ int main( int argc, char* args[] )
                 escape = 1;
          }
 
-
+        renderMap(sdlRenderer);
         affichageMario(sdlRenderer, xMario, yMario, dirMario) ;
         IUTSDL_RefreshScreen(sdlRenderer);
     }
