@@ -149,6 +149,7 @@ void initTextures(SDL_Renderer *sdlRenderer)
     pTextureBrigde=loadTexture(sdlRenderer, "bridge");
     pTextureBomb=loadTexture(sdlRenderer, "bomb");
     pTextureExplosion=loadTexture(sdlRenderer, "explosion");
+    pTextureTurtle=loadTexture(sdlRenderer, "turtle");
 
     pTexturePlant=loadTexture(sdlRenderer, "plant");
     pTextureFlagpole=loadTexture(sdlRenderer, "flagpole");
