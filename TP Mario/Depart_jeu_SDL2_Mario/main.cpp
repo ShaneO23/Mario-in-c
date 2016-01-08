@@ -453,9 +453,6 @@ int main( int argc, char* args[] )
 
     rules();
 
-    // Initialisations graphique SDL
-    // LAISSER TEL QUEL
-    //
     // Initialisation utilisation de la SDL
     if( IUTSDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER) != NO_ERROR )
     {
@@ -503,7 +500,7 @@ int main( int argc, char* args[] )
 
     while(!escape)
     {
-        // Affichage titre de fenetre
+        // Affichage du titre en haut de la fenetre
         SDL_SetWindowTitle(pScreen, gTitle);
 
         SDL_Delay(50) ;
@@ -537,7 +534,6 @@ int main( int argc, char* args[] )
                         break;
                         case SDLK_ESCAPE:
                         escape = 1;
-
 
                 }
             }
