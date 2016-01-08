@@ -282,7 +282,7 @@ void affichageBowser(SDL_Renderer *sdlRenderer)
 //effacer les traces de mario
 void effacerMario(SDL_Renderer *sdlRenderer, int x, int y)
 {
-    SDL_Rect rect = rectGrille[x][y] ;
+    SDL_Rect rect = rectGrille[y][x] ;
     SDL_RenderCopy(sdlRenderer, pTextureBackground, NULL, &rect);
 
 }
@@ -305,7 +305,7 @@ void init(SDL_Renderer *sdlRenderer)
 void renderMap(SDL_Renderer *sdlRenderer) {
     // Print Background
     for(int y = 0; y < NBL; y++) {
-        for (int x = 0; x < NBL; x++) {
+        for (int x = 0; x < NBC; x++) {
             char tile = ecran[y][x];
             renderTile(sdlRenderer, x, y, pTextureBackground);
             renderTile(sdlRenderer, x, y, tileTexture(tile));
