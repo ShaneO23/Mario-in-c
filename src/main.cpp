@@ -250,11 +250,11 @@ SDL_Texture *tileTexture(char tile) {
 void affichageMario(SDL_Renderer *sdlRenderer, int x, int y, int sens)
 {
     SDL_Rect rectMario ;
-    rectMario.x = x*CASE_W ;
-    rectMario.y = y*CASE_H ;
+    rectMario.x = x * CASE_W;
+    rectMario.y = y * CASE_H;
     rectMario.w = CASE_W ;
     rectMario.h = CASE_H ;
-    SDL_RenderCopy(sdlRenderer, pTextureMario[4], NULL, &rectMario); //on note pTextureMario[a] afin de pouvoir utiliser le sprite
+    SDL_RenderCopy(sdlRenderer, pTextureMario[sens], NULL, &rectMario); //on note pTextureMario[a] afin de pouvoir utiliser le sprite
 }
 
 //Print Trophy
@@ -323,8 +323,6 @@ int main( int argc, char* args[] )
 
 
     int x, y,i,j,sens ;
-    // Mario Position
-    int xMario, yMario ;
     //Mario Direction
     int dirMario ;
 
@@ -369,8 +367,8 @@ int main( int argc, char* args[] )
     // Initialisations
     init(sdlRenderer) ;
 
-    xMario = 0 ;
-    yMario = 0 ;
+    int xMario = 0;
+    int yMario = 0;
     dirMario = MOVE_DOWN ;
     int dollar=0;
     int escape=0;
@@ -461,8 +459,7 @@ int main( int argc, char* args[] )
                         }*/
 
 // Coins
-            if (ecran[xMario][yMario] == 'C')
-            {
+            if (ecran[xMario][yMario] == 'C') {
                 dollar++;
             }
 
