@@ -49,6 +49,7 @@ const int tatoal_time = 60;    //60seconds to read the rules
 // Pour affichage (traitement timer)
 char gTitle[100] = "";              // Titre a afficher sur la fenetre
 int sortie = 0 ;
+int game_time=0;
 
 // MAP
 
@@ -102,13 +103,12 @@ SDL_Rect rectGrille[NBC][NBL] ;
 Uint32 callback( Uint32 interval, void* param )
 {
     static int compteur = 0 ;
-    int game_time ; // Init du temps de jeu
     game_time = compteur / 1000 ;  // Conversion en secondes
 
     compteur+=interval ;
 
     //Print the time in the top bar
-    sprintf(gTitle," - Temps de jeu : %d sec ",game_time) ;
+    sprintf(gTitle," Shane Mario's Game |  Game Time : %d seconds ",game_time) ;
 
 
     return interval;
@@ -122,7 +122,7 @@ void rules()
     printf("\nAnd if you fall in the water you die also......\n");
     printf("\nTo win :\n 1) Collect all the coins\n 2) Get to the Flagpole the fastest you can to get a better Score !!\n");
     printf("\nRemember this game is for Fun !\n");
-    printf("\nThe Game will start by itself, ENJOY!!!!!!\n And PRESS ECHAP to quit the game");
+    printf("\nThe Game will start by itself, ENJOY!!!!!!\n And PRESS ECHAP to quit the game\n");
 
     SDL_Delay(4000) ;
 }
@@ -348,6 +348,9 @@ int main( int argc, char* args[] )
     dirMario = MOVE_DOWN;
     int dollar = 0;
 
+
+
+
     // Quit game
     int escape = 0;
     // Died
@@ -473,7 +476,10 @@ int main( int argc, char* args[] )
             affichageBowser(sdlRenderer);
         }
         IUTSDL_RefreshScreen(sdlRenderer);
+
     }
+
+    printf("\nYou played for %d seconds",game_time);
 
     return 0 ;
 
