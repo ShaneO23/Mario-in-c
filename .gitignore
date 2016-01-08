@@ -39,5 +39,6 @@
 !libs/SDL2/lib/*.la
 !libs/SDL2/lib/*.a
 !libs/SDL2/lib/*.lib
+!libs/SDL2/lib/*.dll
 
 *.cscope_file_list
