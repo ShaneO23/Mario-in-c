@@ -224,11 +224,16 @@ void affichageMario(SDL_Renderer *sdlRenderer, int x, int y, int sens)
 //Print Trophy
 void affichageTrophy(SDL_Renderer *sdlRenderer)
 {
+    int w = 13 * CASE_W;
+    int h = 8 * CASE_H;
+    int x = SCREEN_W/2 - w/2;
+    int y = SCREEN_H/2 - h/2;
+
     SDL_Rect rect;
-    rect.x = 12*CASE_W ;
-    rect.y = 5*CASE_H ;
-    rect.w = 13*CASE_W ;
-    rect.h = 8*CASE_H ;
+    rect.x = x;
+    rect.y = y;
+    rect.w = w;
+    rect.h = h;
     SDL_RenderCopy(sdlRenderer, pTextureTrophy, NULL, &rect);
 }
 
@@ -339,9 +344,14 @@ int main( int argc, char* args[] )
     int xMario = 0;
     int yMario = 0;
     dirMario = MOVE_DOWN ;
-    int dollar=0;
-    int escape=0;
-    int dead=0;
+    int dollar = 0;
+
+    // Quit game
+    int escape = 0;
+    // Died
+    int dead = 0;
+    // Sucess
+    int success = 0;
 
     while(!escape)
     {
@@ -427,13 +437,15 @@ int main( int argc, char* args[] )
 
 
         // when Mario on 'F' with all the coins collected the game ends
-        if (dollar==5 && tile == 'F') {
-            escape = 1;
+        if (dollar == 5 && tile == 'F') {
+            success = 1;
         }
 
         // Render
         SDL_RenderClear(sdlRenderer);
-        if(!dead) {
+        if(success) {
+            affichageTrophy(sdlRenderer);
+        } else if(!dead) {
             renderMap(sdlRenderer);
             affichageMario(sdlRenderer, xMario, yMario, dirMario);
         } else {
