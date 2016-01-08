@@ -235,11 +235,17 @@ void affichageTrophy(SDL_Renderer *sdlRenderer)
 //Print Bowser
 void affichageBowser(SDL_Renderer *sdlRenderer)
 {
+    // Compute position
+    int w = 8*CASE_W;
+    int h = 8*CASE_H;
+    int x = SCREEN_W/2 - w/2;
+    int y = SCREEN_H/2 - h/2;
+
     SDL_Rect rect;
-    rect.x = 5*CASE_W ;
-    rect.y = 5*CASE_H ;
-    rect.w = 8*CASE_W ;
-    rect.h = 8*CASE_H ;
+    rect.x = x;
+    rect.y = y;
+    rect.w = w;
+    rect.h = h;
     SDL_RenderCopy(sdlRenderer, pTextureBowser, NULL, &rect);
 }
 
@@ -335,6 +341,7 @@ int main( int argc, char* args[] )
     dirMario = MOVE_DOWN ;
     int dollar=0;
     int escape=0;
+    int dead=0;
 
     while(!escape)
     {
@@ -394,19 +401,14 @@ int main( int argc, char* args[] )
 
         // If Mario hits something
         char tile = ecran[yMario][xMario];
-        if(tile == 'O' ) {
-            renderTile(sdlRenderer, xMario, yMario, pTextureExplosion);
-            SDL_Delay(1000);
-            affichageBowser(sdlRenderer);
-        }
-        if(tile == 'P') {
-                affichageBowser(sdlRenderer);
-        }
-        if(tile == 'T') {
-                affichageBowser(sdlRenderer);
-        }
-        if(tile == 'E') {
-                affichageBowser(sdlRenderer);
+        if(tile == 'O') {
+            dead = 1;
+        } else if(tile == 'P') {
+            dead = 1;
+        } else if(tile == 'T') {
+            dead = 1;
+        } else if(tile == 'E') {
+            dead = 1;
         }
       /*  if(ecran[xMario][yMario] == 'S')
             {
@@ -431,8 +433,12 @@ int main( int argc, char* args[] )
 
         // Render
         SDL_RenderClear(sdlRenderer);
-        renderMap(sdlRenderer);
-        affichageMario(sdlRenderer, xMario, yMario, dirMario) ;
+        if(!dead) {
+            renderMap(sdlRenderer);
+            affichageMario(sdlRenderer, xMario, yMario, dirMario);
+        } else {
+            affichageBowser(sdlRenderer);
+        }
         IUTSDL_RefreshScreen(sdlRenderer);
     }
 
