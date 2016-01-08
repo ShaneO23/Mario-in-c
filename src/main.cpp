@@ -161,7 +161,7 @@ void rules()
     printf("\nAnd if you fall in the water you die also......\n");
     printf("\nTo win :\n 1) Collect all the coins\n 2) Get to the Flagpole the fastest you can to get a better Score !!\n");
     printf("\nRemember this game is for Fun !\n");
-    printf("\nThe Game will start by itself, ENJOY!!!!!!");
+    printf("\nThe Game will start by itself, ENJOY!!!!!!\n And PRESS ECHAP to quit the game");
 
     //SDL_Delay(2000) ;
 }
