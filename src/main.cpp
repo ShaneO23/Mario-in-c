@@ -438,7 +438,7 @@ int main( int argc, char* args[] )
 
 
         // when Mario on 'F' with all the coins collected the game ends
-        if (dollar == 5 && tile == 'F') {
+        if (dollar > 5 && tile == 'F') {
             success = 1;
         }
 
