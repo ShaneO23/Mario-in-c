@@ -122,7 +122,7 @@ SDL_Texture *pTextureWall ;
 SDL_Texture *pTextureWater ;
 SDL_Texture *pTextureFlagpole ;
 SDL_Texture *pTextureBomb ;
-SDL_Texture *pTexturExplosion ;
+SDL_Texture *pTextureExplosion ;
 SDL_Texture *pTexturePlant ;
 SDL_Texture *pTextureTurtle ;
 SDL_Texture *pTextureInverse ;
