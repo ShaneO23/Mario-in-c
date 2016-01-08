@@ -344,7 +344,7 @@ int main( int argc, char* args[] )
 
     int xMario = 0;
     int yMario = 0;
-    dirMario = MOVE_DOWN ;
+    dirMario = MOVE_DOWN;
     int dollar = 0;
 
     // Quit game
@@ -391,22 +391,39 @@ int main( int argc, char* args[] )
                     }
             }
 
-            switch (sens) {
-                case MOVE_UP:
-                    yMario--;
-                    break;
+            // Move mario
+            if(!dead && !success) {
+                // Change move according to keyboard input
+                int x = xMario;
+                int y = yMario;
+                switch(sens) {
+                    case MOVE_UP:
+                        y--;
+                        break;
+                    case MOVE_DOWN:
+                        y++;
+                        break;
+                    case MOVE_LEFT:
+                        x--;
+                        break;
+                    case MOVE_RIGHT:
+                        x++;
+                        break;
+                }
 
-                case MOVE_DOWN:
-                    yMario++;
-                    break;
-
-                case MOVE_LEFT:
-                    xMario--;
-                    break;
-
-                case MOVE_RIGHT:
-                    xMario++;
-                    break;
+                // Validate move (check if allowed)
+                char targetTile = ecran[y][x];
+                if(
+                    (targetTile == 'M') ||
+                    (targetTile == 'W') ||
+                    (x < 0) || (x >= NBC) ||
+                    (y < 0) || (y >= NBL)
+                ) {
+                } else {
+                    // Actually move mario
+                    xMario = x;
+                    yMario = y;
+                }
             }
         }
 
