@@ -564,6 +564,8 @@ int main( int argc, char* args[] )
 // If Mario hits something
                     if(ecran[xMario][yMario] == 'B' )
                         {
+                            affichageExplosion(sdlRenderer);
+                            SDL_Delay(100);
                             affichageBowser(sdlRenderer);
                         }
                     if(ecran[xMario][yMario] == 'P')
