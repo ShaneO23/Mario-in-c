@@ -419,6 +419,7 @@ int main( int argc, char* args[] )
                     (x < 0) || (x >= NBC) ||
                     (y < 0) || (y >= NBL)
                 ) {
+                    // Block movement
                 } else {
                     // Actually move mario
                     xMario = x;
@@ -429,13 +430,12 @@ int main( int argc, char* args[] )
 
         // If Mario hits something
         char tile = ecran[yMario][xMario];
-        if(tile == 'O') {
-            dead = 1;
-        } else if(tile == 'P') {
-            dead = 1;
-        } else if(tile == 'T') {
-            dead = 1;
-        } else if(tile == 'E') {
+        if(
+            (tile == 'O') ||
+            (tile == 'P') ||
+            (tile == 'T') ||
+            (tile == 'E')
+        ) {
             dead = 1;
         }
       /*  if(ecran[xMario][yMario] == 'S')
