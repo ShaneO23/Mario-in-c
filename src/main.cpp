@@ -318,9 +318,6 @@ int main( int argc, char* args[] )
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(sdlRenderer, SCREEN_W, SCREEN_H);
 
-
-    IUTSDL_ClearScreen(sdlRenderer);
-
     // Fin d'initialisation graphique SDL
     //
     // Timer
@@ -348,23 +345,21 @@ int main( int argc, char* args[] )
 
         // Keyboard to action in game
         SDL_Event( event );
-        while( SDL_PollEvent( &event ) != 0 )
-        {
+        while(SDL_PollEvent( &event ) != 0) {
             sens = -1 ;
-            switch ( event.type)
-            {
+            switch(event.type) {
+                // Window exit
                 case SDL_QUIT :
-                escape = 1 ;
-                break;
+                    escape = 1 ;
+                    break;
 
-            case SDL_KEYDOWN :
-                switch( event.key.keysym.sym )
-                {
-
+                // Handle keyboard
+                case SDL_KEYDOWN :
+                    switch(event.key.keysym.sym) {
                     case SDLK_LEFT:
                         sens = MOVE_LEFT ;
-                    break;
-                        case SDLK_RIGHT:
+                        break;
+                    case SDLK_RIGHT:
                         sens = MOVE_RIGHT ;
                         break;
                     case SDLK_UP:
@@ -373,79 +368,72 @@ int main( int argc, char* args[] )
                     case SDLK_DOWN:
                         sens = MOVE_DOWN ;
                         break;
-                        case SDLK_ESCAPE:
+                    case SDLK_ESCAPE:
                         escape = 1;
-
-                }
-            }
-
-            switch (sens)
-            {
-            case MOVE_UP:
-                yMario--;
-                break;
-
-            case MOVE_DOWN:
-                yMario++;
-                break;
-
-            case MOVE_LEFT:
-                xMario--;
-                break;
-
-            case MOVE_RIGHT:
-                xMario++;
-                break;
-            }
-
-// If Mario hits something
-                    if(ecran[xMario][yMario] == 'O' ) {
-                        renderTile(sdlRenderer, xMario, yMario, pTextureExplosion);
-                        SDL_Delay(1000);
-                        affichageBowser(sdlRenderer);
                     }
-                    if(ecran[xMario][yMario] == 'P')
-                        {
-                            affichageBowser(sdlRenderer);
-                        }
-                     if(ecran[xMario][yMario] == 'T')
-                        {
-                            affichageBowser(sdlRenderer);
-                        }
-                    if(ecran[xMario][yMario] == 'E')
-                        {
-                            affichageBowser(sdlRenderer);
-                        }
-                  /*  if(ecran[xMario][yMario] == 'S')
-                        {
-                            MOVE_UP    =MOVE_DOWN;
-                            MOVE_DOWN  =MOVE_UP;
-                            MOVE_RIGHT =MOVE_LEFT;
-                            MOVE_LEFT  =MOVE_RIGHT;
-                        }*/
-
-// Coins
-            if (ecran[xMario][yMario] == 'C') {
-                printf("Hit coin !\n");
-                ecran[xMario][yMario] = '.';
-                dollar++;
             }
 
+            switch (sens) {
+                case MOVE_UP:
+                    yMario--;
+                    break;
 
-// when Mario on 'F' with all the coins collected the game ends
-        if (dollar==5, ecran[xMario][yMario] == 'F')
-         {
-                escape = 1;
-         }
+                case MOVE_DOWN:
+                    yMario++;
+                    break;
 
+                case MOVE_LEFT:
+                    xMario--;
+                    break;
+
+                case MOVE_RIGHT:
+                    xMario++;
+                    break;
+            }
+        }
+
+        // If Mario hits something
+        char tile = ecran[yMario][xMario];
+        if(tile == 'O' ) {
+            renderTile(sdlRenderer, xMario, yMario, pTextureExplosion);
+            SDL_Delay(1000);
+            affichageBowser(sdlRenderer);
+        }
+        if(tile == 'P') {
+                affichageBowser(sdlRenderer);
+        }
+        if(tile == 'T') {
+                affichageBowser(sdlRenderer);
+        }
+        if(tile == 'E') {
+                affichageBowser(sdlRenderer);
+        }
+      /*  if(ecran[xMario][yMario] == 'S')
+            {
+                MOVE_UP    =MOVE_DOWN;
+                MOVE_DOWN  =MOVE_UP;
+                MOVE_RIGHT =MOVE_LEFT;
+                MOVE_LEFT  =MOVE_RIGHT;
+            }*/
+
+        // Coins
+        if (tile == 'C') {
+            // Remove coin
+            ecran[yMario][xMario] = '.';
+            dollar++;
+        }
+
+
+        // when Mario on 'F' with all the coins collected the game ends
+        if (dollar==5 && tile == 'F') {
+            escape = 1;
+        }
+
+        // Render
+        IUTSDL_ClearScreen(sdlRenderer);
         renderMap(sdlRenderer);
         affichageMario(sdlRenderer, xMario, yMario, dirMario) ;
         IUTSDL_RefreshScreen(sdlRenderer);
-    }
-
-    IUTSDL_ClearScreen(sdlRenderer);
-    IUTSDL_RefreshScreen(sdlRenderer);
-
     }
 
     return 0 ;
