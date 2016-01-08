@@ -122,6 +122,7 @@ SDL_Texture *pTextureWall ;
 SDL_Texture *pTextureWater ;
 SDL_Texture *pTextureFlagpole ;
 SDL_Texture *pTextureBomb ;
+SDL_Texture *pTexturExplosion ;
 SDL_Texture *pTexturePlant ;
 SDL_Texture *pTextureTurtle ;
 SDL_Texture *pTextureInverse ;
@@ -177,6 +178,8 @@ void initTextures(SDL_Renderer *sdlRenderer)
     pTextureWater=IUTSDL_LoadTexture(sdlRenderer, "water.bmp" ,0xFF,0xFF,0xFF);
     pTextureBrigde=IUTSDL_LoadTexture(sdlRenderer, "bridge.bmp" ,0xFF,0xFF,0xFF);
     pTextureBomb=IUTSDL_LoadTexture(sdlRenderer, "bomb.bmp" ,0xFF,0xFF,0xFF);
+    pTextureExplosion=IUTSDL_LoadTexture(sdlRenderer, "explosion.bmp" ,0xFF,0xFF,0xFF);
+
     pTexturePlant=IUTSDL_LoadTexture(sdlRenderer, "plant.bmp" ,0xFF,0xFF,0xFF);
     pTextureFlagpole=IUTSDL_LoadTexture(sdlRenderer, "flagpole.bmp" ,0xFF,0xFF,0xFF);
     pTextureInverse=IUTSDL_LoadTexture(sdlRenderer, "inverse.bmp" ,0xFF,0xFF,0xFF);
@@ -240,6 +243,28 @@ void affichageMur(SDL_Renderer *sdlRenderer)
     rect.w = CASE_W ;
     rect.h = CASE_H ;
     SDL_RenderCopy(sdlRenderer, pTextureWall, NULL, &rect);
+}
+
+//Print Bombs
+void affichageBomb(SDL_Renderer *sdlRenderer)
+{
+    SDL_Rect rect ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureBomb, NULL, &rect);
+}
+
+//Print Explosion
+void affichageMur(SDL_Renderer *sdlRenderer)
+{
+    SDL_Rect rect ;
+    rect.x = CASE_W ;
+    rect.y = CASE_H ;
+    rect.w = CASE_W ;
+    rect.h = CASE_H ;
+    SDL_RenderCopy(sdlRenderer, pTextureExplosion, NULL, &rect);
 }
 
 //Print Inverse
