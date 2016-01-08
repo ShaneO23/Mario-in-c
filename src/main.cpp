@@ -50,7 +50,7 @@ const int tatoal_time = 60;    //60seconds to read the rules
 char gTitle[100] = "";              // Titre a afficher sur la fenetre
 int sortie = 0 ;
 
-// Déclaration de la carte
+// MAP
 
 // 'C' = Coins, 'M' = Wall, 'F' = Flagpole, 'O' = Bomb, 'P' = Plant , 'B'=Bridge, 'W'=Water
 char ecran [NBL][NBC] =
@@ -272,7 +272,6 @@ void init(SDL_Renderer *sdlRenderer)
     // Textures pour afficher éléments du jeu
     initTextures(sdlRenderer) ;
 
-
     // Grille pour affichage décors. Attention Table colonne/ligne pour respecter le sens x=colonne et y=ligne
     initRectGrille() ;
 }
@@ -433,8 +432,8 @@ int main( int argc, char* args[] )
         if(
             (tile == 'O') ||
             (tile == 'P') ||
-            (tile == 'T') ||
-            (tile == 'E')
+            (tile == 'T')
+
         ) {
             dead = 1;
         }
