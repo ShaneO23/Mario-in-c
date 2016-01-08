@@ -480,7 +480,7 @@ int main( int argc, char* args[] )
     }
 
     // Icône
-    IUTSDL_SetWindowIcon (pScreen, "mario-icone-64.bmp");
+    IUTSDL_SetWindowIcon (pScreen, "images/mario-icone-64.bmp");
 
     // Début affichege
     //sdlRenderer = SDL_CreateRenderer(pScreen, -1, 0 /*SDL_RENDERER_ACCELERATED*/);      // Association du Buffer Video à la Fenetre
