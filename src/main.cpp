@@ -430,7 +430,7 @@ int main( int argc, char* args[] )
         }
 
         // Render
-        IUTSDL_ClearScreen(sdlRenderer);
+        SDL_RenderClear(sdlRenderer);
         renderMap(sdlRenderer);
         affichageMario(sdlRenderer, xMario, yMario, dirMario) ;
         IUTSDL_RefreshScreen(sdlRenderer);
