@@ -163,7 +163,7 @@ void rules()
     printf("\nRemember this game is for Fun !\n");
     printf("\nThe Game will start by itself, ENJOY!!!!!!");
 
-    SDL_Delay(2000) ;
+    //SDL_Delay(2000) ;
 }
 
 // Load texture
