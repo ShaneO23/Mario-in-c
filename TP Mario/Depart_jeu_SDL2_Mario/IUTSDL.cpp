@@ -215,6 +215,10 @@ SDL_Texture* IUTSDL_LoadTexture(SDL_Renderer *sdlRenderer, const char fichier[],
 {
 
    SDL_Surface *pSurface  = SDL_LoadBMP(fichier);                                       // Chargement d'une Surface
+   if(pSurface == NULL) {
+      IUTSDL_Print_Error("Error loading image");
+      return NULL;
+   }
    SDL_SetColorKey( pSurface,   1, SDL_MapRGB( pSurface->format, colorkey_red, colorkey_green, colorkey_blue ));          // Affectation de la Couleur de Transparence (Ici NOIR)
    SDL_Texture *pTexture = SDL_CreateTextureFromSurface(sdlRenderer, pSurface);    // Transformation de la Surface en Texture
    SDL_FreeSurface(pSurface);                                                         // Liberation de la mémoire de a Surface
