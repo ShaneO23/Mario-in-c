@@ -124,7 +124,7 @@ void rules()
     printf("\nRemember this game is for Fun !\n");
     printf("\nThe Game will start by itself, ENJOY!!!!!!\n And PRESS ECHAP to quit the game");
 
-    //SDL_Delay(2000) ;
+    SDL_Delay(4000) ;
 }
 
 // Load texture
@@ -392,22 +392,29 @@ int main( int argc, char* args[] )
                     }
             }
 
+
+
             // Move mario
             if(!dead && !success) {
                 // Change move according to keyboard input
                 int x = xMario;
                 int y = yMario;
+
                 switch(sens) {
                     case MOVE_UP:
+                        dirMario=sens;
                         y--;
                         break;
                     case MOVE_DOWN:
+                        dirMario=sens;
                         y++;
                         break;
                     case MOVE_LEFT:
+                        dirMario=sens;
                         x--;
                         break;
                     case MOVE_RIGHT:
+                        dirMario=sens;
                         x++;
                         break;
 
